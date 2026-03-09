@@ -30,7 +30,7 @@ def detect_vehicles(video_path):
         gray_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
 
         # 자동차 객체 탐지 수행
-        cars = car_cascade.detectMultiScale(gray_frame, 1.1, 5)
+        cars = car_cascade.detectMultiScale(gray_frame, 1.1, 1)
 
         # 탐지된 자동차 주위에 사각형 그리기 (시각화)
         for (x, y, w, h) in cars:
