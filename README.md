@@ -1,4 +1,4 @@
-# Tesla Vision Edge Case Simulator
+# 2021년 당시 Tesla Vision Edge Case Simulator
 
 📺 상세 분석 및 시연 영상
 이 시뮬레이터가 실제로 그림자나 역광을 어떻게 장애물로 오인하는지, 그리고 테슬라의 레이더 제거 결정에 대한 개발자 관점의 상세한 분석은 아래 유튜브 영상에서 확인하실 수 있습니다.
