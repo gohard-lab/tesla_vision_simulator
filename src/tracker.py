@@ -5,8 +5,10 @@ try:
     import requests
     from supabase import create_client, Client
     TRACKING_ENABLED = True
-except ImportError:
+    print("✅ [디버그] 통계 패키지 로드 성공!")
+except ImportError as e:
     TRACKING_ENABLED = False
+    print(f"❌ [디버그] 패키지가 없어서 통계가 꺼졌습니다: {e}")
 
 _supabase_client = None
 
@@ -39,6 +41,7 @@ def get_location_data():
 def log_app_usage(app_name: str, action: str, details: dict = None):
     # 2. 패키지가 설치되지 않은 유저라면 여기서 함수를 즉시 종료합니다.
     if not TRACKING_ENABLED:
+        print("⚠️ [디버그] TRACKING_ENABLED가 False라서 전송 취소됨.")
         return
 
     try:
@@ -60,6 +63,11 @@ def log_app_usage(app_name: str, action: str, details: dict = None):
                 'lon': location['lon']
             })
             
-        supabase.table('usage_logs').insert(log_data).execute()
-    except Exception:
-        pass
+        # 데이터를 쏘고 결과를 받아서 출력해봅니다.(결과를 받지 않는 걸로 변경)
+        # response = supabase.table('usage_logs').insert(log_data).execute()
+        response = supabase.table('usage_logs').insert(log_data, returning='minimal').execute()
+        print(f"✅ [디버그] 데이터 전송 성공! 결과: {response.data}")
+        
+    except Exception as e:
+        # 에러가 나면 조용히 넘어가지 않고 화면에 빨간 글씨로 출력합니다!
+        print(f"🚨 [디버그] Supabase 전송 중 에러 발생: {e}")
