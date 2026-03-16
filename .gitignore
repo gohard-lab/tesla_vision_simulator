@@ -6,6 +6,7 @@ dist/
 wheels/
 *.egg-info
 dashcam_footage*.mp4
+thumbNeil*.*
 
 # Virtual environments
 .venv/
