@@ -8,6 +8,8 @@ YouTube 영상 (잡학다식 개발자): https://www.youtube.com/watch?v=xWrnxjh
 
 파이썬(Python)과 OpenCV를 활용하여 테슬라의 '비전 온리(Vision Only)' 자율주행 시스템이 현실 도로에서 직면하는 엣지 케이스(팬텀 브레이킹 등)를 시각적으로 분석하는 기초 시뮬레이터입니다.
 
+dashcam_footage.mp4 파일 구글 드라이브 : https://drive.google.com/file/d/1MkoHAOvoOfuNzAATCTRyu7TEAhgq7fVE/view?usp=sharing
+
 본 프로젝트는 더 나은 기능 업데이트 방향을 설정하기 위해, 실행 시 익명화된 최소한의 사용 통계(실행 횟수, 국가/도시 등)를 수집합니다.
 
 
