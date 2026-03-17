@@ -10,6 +10,8 @@ YouTube 영상 (잡학다식 개발자): https://www.youtube.com/watch?v=xWrnxjh
 
 dashcam_footage.mp4 파일 구글 드라이브 : https://drive.google.com/file/d/1MkoHAOvoOfuNzAATCTRyu7TEAhgq7fVE/view?usp=sharing
 
+haarcascade_car.xml 파일 구글 드라이브 : https://drive.google.com/file/d/11Sauad_Sm1PExpPFH0NkB-X39eOGg-W8/view?usp=sharing
+
 본 프로젝트는 더 나은 기능 업데이트 방향을 설정하기 위해, 실행 시 익명화된 최소한의 사용 통계(실행 횟수, 국가/도시 등)를 수집합니다.
 
 
