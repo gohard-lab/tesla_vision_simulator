@@ -1,7 +1,7 @@
 import cv2
 import os
 import sys
-from tracker import log_app_usage
+from tracker_exe import log_app_usage
 
 video_path = 'dashcam_footage.mp4'
 if not os.path.exists(video_path):
@@ -50,5 +50,5 @@ def detect_vehicles(video_path):
     cv2.destroyAllWindows()
 
 if __name__ == "__main__":
-    log_app_usage("tesla-vision-simulator", "vision_simulator_started")
+    log_app_usage("tesla_vision_simulator", "vision_simulator_started")
     detect_vehicles('dashcam_footage.mp4')
