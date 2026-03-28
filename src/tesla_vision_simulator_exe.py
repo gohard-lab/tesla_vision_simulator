@@ -9,6 +9,7 @@ import os
 import cv2
 import sys
 import webbrowser
+# import fastf1
 from PySide6.QtCore import QTimer
 from PySide6.QtWidgets import QApplication, QMessageBox
 from tracker_exe import log_app_usage

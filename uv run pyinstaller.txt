@@ -1,1 +1,1 @@
-uv run pyinstaller --noconsole --onefile d:\My_Work\Git_hub\tesla_vision_simulator\src\tesla_vision_simulator_exe.py
+uv run pyinstaller --onefile --windowed --exclude-module fastf1 --exclude-module pandas --exclude-module matplotlib --exclude-module tkinter --exclude-module IPython --exclude-module notebook d:\My_Work\Git_hub\tesla_vision_simulator\src\tesla_vision_simulator_exe.py ; [System.Console]::Beep(400, 500)
