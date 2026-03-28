@@ -1,0 +1,1 @@
+uv run pyinstaller --noconsole --onefile d:\My_Work\Git_hub\tesla_vision_simulator\src\tesla_vision_simulator_exe.py

@@ -1,15 +1,27 @@
-import cv2
+# import cv2
+# import os
+# import sys
+# import webbrowser
+# from tracker_exe import log_app_usage
+# from PyQt5.QtWidgets import QApplication, QMessageBoxuv  # 사용 중인 버전에 맞게 수정 (PyQt5 / PySide6 등)
+
 import os
+import cv2
 import sys
+import webbrowser
+from PySide6.QtCore import QTimer
+from PySide6.QtWidgets import QApplication, QMessageBox
 from tracker_exe import log_app_usage
 
 video_path = 'dashcam_footage.mp4'
 if not os.path.exists(video_path):
+    # 💡 Tip: 실무에서는 print 대신 QMessageBox로 에러를 띄워주는 것이 훨씬 세련됩니다.
     print(f"에러: {video_path} 파일을 찾을 수 없습니다. 경로를 확인해 주세요.")
     sys.exit(1)
 
 
 def detect_vehicles(video_path):
+    print("🚀 Tesla Vision Simulator (Haar Cascade 버전) 가동...")
     # 비디오 캡처 객체 초기화
     cap = cv2.VideoCapture(video_path)
     
@@ -38,7 +50,7 @@ def detect_vehicles(video_path):
             cv2.rectangle(frame, (x, y), (x+w, y+h), (0, 0, 255), 5)
 
         # 결과 화면 출력
-        cv2.imshow('Tesla Vision Simulator', frame)
+        cv2.imshow('Tesla Vision Simulator (Press Q to quit)', frame)
 
         # 'q' 키를 누르면 종료
         # 대기 시간을 33ms에서 1ms로 줄여서, 연산이 끝나는 대로 지연 없이 바로바로 다음 프레임으로 넘어가게
@@ -48,7 +60,40 @@ def detect_vehicles(video_path):
     # 보안 및 리소스 관리를 위해 사용이 끝난 객체 반환
     cap.release()
     cv2.destroyAllWindows()
+    print("👋 시뮬레이터 종료.")
+
+
+def show_star_popup():
+    log_app_usage("tesla_vision_simulator", "star_prompt_displayed", details={"ui": "pyside6_msgbox"})
+    
+    msg = QMessageBox(None) 
+    msg.setWindowTitle("⭐ Support Polymath Developer")
+    
+    msg.setText(
+        "💡 유용하게 사용하셨나요? 소스코드만 날름 가져가는 분들이 많습니다.\n"
+        "개발자의 땀과 노력에 대한 최소한의 예의로 깃허브 Star⭐를 부탁드립니다!\n\n"
+        "Did you find this useful? Please show some basic courtesy\n"
+        "for the developer's hard work by leaving a GitHub Star⭐."
+    )
+    
+    star_btn = msg.addButton("👉 깃허브로 이동하여 Star 누르기", QMessageBox.ActionRole)
+    # msg.addButton("닫기", QMessageBox.RejectRole)
+    
+    msg.exec()
+    
+    if msg.clickedButton() == star_btn:
+        # 트래커 기록 (버튼 클릭) - 프로젝트명에 맞게 수정
+        log_app_usage("tesla_vision_simulator", "github_star_clicked", details={"ui": "pyside6_msgbox_btn"})
+        webbrowser.open("https://github.com/gohard-lab/tesla_vision_simulator")
+
+
 
 if __name__ == "__main__":
+    app = QApplication(sys.argv)
+    
     log_app_usage("tesla_vision_simulator", "vision_simulator_started")
-    detect_vehicles('dashcam_footage.mp4')
+    
+    show_star_popup()
+    
+    # 팝업창이 닫힌 후, OpenCV 시뮬레이터 가동
+    detect_vehicles(video_path)
